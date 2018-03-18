@@ -320,7 +320,7 @@
 
 ! ............................... WRITEDYN
 
-      subroutine writedyn(x,v,aM,S,Z,Etot,Ekin,Epot,wf)
+      subroutine writedyn(x,v,a_coeff,aM,S,Z,Etot,Ekin,Epot,wf)
       use prec_mod
       use units_mod
       implicit real(kind=dpr) (a-h,o-z)
@@ -329,7 +329,9 @@
       integer :: nindices, istat, istat2, i
       integer, dimension(:), allocatable :: indices_towrite
       logical, dimension(:), allocatable :: write_pos
-!
+
+	DOUBLE COMPLEX :: a_coeff(nstat,nat,3)
+
       dimension x(nat,3),v(nat,3),g(nat,3),a(nat,3)
       dimension aM(nat),Z(nat),Epot(nstat),wf(nstat,2)
       character(2) S(nat)
